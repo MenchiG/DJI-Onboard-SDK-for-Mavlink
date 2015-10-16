@@ -1,0 +1,6 @@
+<?DJI Onboard API Sample XML version="1.0.0"?>
+<root>
+	<UART Baud="230400" Name="/dev/ttyAMA0"/>
+	<Account AppID="your ID" ApiLevel="2" AppKey="your KEY" />
+</root>
+

@@ -12,3 +12,5 @@ Moreover, waypoints is supported.
 I suggest that please activate your M100 by sample provided by DJI Onboard SDK before running this program.
 
 Also, please make sure you are able to get the control right, when you wants to run this program. 
+
+NEED: g++ version: 4.8.2

@@ -133,6 +133,7 @@ int main(int argc,char **argv)
 		printf("--------------------------\n");
 
 		DJI_Pro_Activate_API(&user_act_data,NULL);
+        usleep(20000);
 		DJI_Pro_Control_Management(1,NULL);
 	}
 	else
@@ -141,7 +142,7 @@ int main(int argc,char **argv)
 		return 0;
 	}
 
- 	mavlink_adapter::set_mavlink("10.60.23.178",14550);
+ 	mavlink_adapter::set_mavlink("10.60.235.44",14550);
    	std::thread th_rec([&]{
        mavlink_adapter::recv_function();
     }

@@ -10,6 +10,7 @@ typedef struct
     float height;
     unsigned char health_flag;
     float uncertain;
+    unsigned int cmd;
 }api_pos_custom_data_t;
 
 

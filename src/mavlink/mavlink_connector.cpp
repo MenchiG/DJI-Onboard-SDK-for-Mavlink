@@ -221,6 +221,7 @@ namespace mavlink_adapter
             case MAVLINK_MSG_ID_MISSION_SET_CURRENT:
             case MAVLINK_MSG_ID_MISSION_ITEM:
                 handle_missions(msg);
+                //break;
             default:
                 printf("msg !!!!!!%d\n",msg->msgid);
         }
@@ -304,11 +305,13 @@ namespace mavlink_adapter
                     break;
                 mavlink_mission_item_t mission_item_t;
                 mavlink_msg_mission_item_decode(msg,&mission_item_t);
-                printf("seq:%d %f %f\n",mission_item_t.seq,mission_item_t.x,mission_item_t.y);
+                printf("seq:%d %f %f cmd: %d\n",mission_item_t.seq,mission_item_t.x,mission_item_t.y,mission_item_t.command);
+
                 api_pos_custom_data_t wp;
                 wp.lati = mission_item_t.x /180 * M_PI;
                 wp.longti = mission_item_t.y /180 * M_PI;
                 wp.alti = mission_item_t.z;
+                wp.cmd  = mission_item_t.command;
 //                wp.uncertain = mission_item_t.
                 wp.uncertain = 10 ;
 

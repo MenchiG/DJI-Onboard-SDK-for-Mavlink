@@ -123,6 +123,14 @@ int dji_waypoints::continue_mission()
     auto wp = missions[mission_id][waypoint_ptr];
     if (approach(wp , dji_variable::global_position ,wp.uncertain))
     {
+        if (wp.cmd == 21) //land
+        {
+            DJI_Pro_Status_Ctrl(6,NULL);
+        }
+        else if(wp.cmd == 20) //RTH
+        {
+            DJI_Pro_Status_Ctrl(1,NULL);
+        }
         waypoint_ptr ++;
         if (waypoint_ptr >= missions[mission_id].size())
         {
@@ -132,11 +140,13 @@ int dji_waypoints::continue_mission()
     }
     else
     {
+        if(wp.cmd == 22 && dji_variable::flight_status != 3)
+            DJI_Pro_Status_Ctrl(4,NULL);
         motion_controls::fly_to_globalpos(wp,false);
+        
     }
-
     return 0;
-    }
+}
 
 bool dji_waypoints::approach(api_pos_custom_data_t wp1, api_pos_custom_data_t wp2,float uncertain)
 {

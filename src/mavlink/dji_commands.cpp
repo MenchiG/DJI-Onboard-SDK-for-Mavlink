@@ -36,7 +36,7 @@ namespace dji_commands
         //     printf("random_test Cmd result: %s \n", *(result + ack_data));
         // }
         // cmd_send_flag = 1;
-        // dji_variable::wp_m.pause_flying();
+        dji_variable::wp_m.pause_flying();
     }
 
     void set_takeoff()
